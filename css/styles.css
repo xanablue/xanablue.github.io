@@ -1,0 +1,159 @@
+#wrapper {
+    background-color: ghostwhite;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid rebeccapurple;
+    border-radius: 10px;
+    height: auto;
+}
+
+body {
+    font-size: 1em;
+    color: darkslateblue;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lavender;
+    width: auto;
+    height: auto;
+}
+
+header {
+    float: none;
+    width: 1000px;
+    height: auto;
+}
+
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rebeccapurple;
+    width: 1000px;
+}
+
+
+nav>ul { 
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav>ul>li {
+    display: inline;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 1.25em;
+    border: 3px solid indigo;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background: ghostwhite;
+    font-weight: 600;
+}
+
+nav>ul>li>a:link {
+    color: mediumpurple;
+    text-decoration: none;
+}
+
+nav>ul>li>a:visited {
+    color: #34185a;
+    text-decoration: none;
+}
+
+nav>ul>li>a:hover {
+    color: rebeccapurple;
+    text-decoration: none;
+}
+
+nav>ul>li:hover {
+    background-color: lavender;
+}
+
+#title {
+    padding-top: 20px;
+    padding-left: 30px;
+    font-variant: small-caps;
+    font-size: 2.5em;
+}
+
+main {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: auto;
+    height: auto;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+}
+
+.indentp {
+    text-indent: 40px;
+}
+
+#homepageimg {
+    border: 2px solid indigo;
+    border-radius: 5px;
+    float: right;
+    display: inline;
+    margin-right: 40px;
+}
+
+#welcome {
+    width: 450px;
+    float: left;
+    display: inline;
+}
+
+#about {
+    width: 450px;
+    float: left;
+}
+
+#favorites {
+    display: block;
+    clear: both;
+    width: 900px;
+    height: 450px;
+}
+
+#favbox>ul {
+    border: 3px solid indigo;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    height: 100px;
+    width: 250px;
+    margin-top: -15px;
+    margin-left: 75px;
+    margin-right: 75px;
+    display: inline-block;
+    background-color: lavender;
+}
+
+#favbox {
+    display: block;
+    float: left;
+}
+
+#favbox>h3 {
+    display: block;
+    margin-top: 0px;
+    margin-left: 70px;
+    font-size: 1.25em;
+}
+
+h1 {
+    color: indigo;
+}
+
+h2, h3 {
+    color: rebeccapurple;
+    padding-left: 5px;
+}
+
+#contents {
+    margin-left: 30px;
+}
