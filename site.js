@@ -21,3 +21,40 @@ switch (true) {
     default:
         break;
 }
+
+// Assignment 5 (Carousel)
+const urls = [
+    'img/hina1.jpg',
+    'img/hina2.jpg',
+    'img/hina3.jpg'
+].map(url => { (new Image()).src = url; return url })
+
+const images = document.querySelectorAll('#carousel img')
+
+let currentImage = 0
+const showImages = () => {
+    const offset = currentImage % urls.length
+    images.forEach((image, index) => {
+        const imageIndex = (index + offset + urls.length) % urls.length
+        image.src = urls[imageIndex]
+    })
+}
+
+showImages()
+
+setInterval(() => {
+    currentImage = currentImage + 1
+    showImages()
+}, 5000)
+
+const prev = document.querySelector('#prev')
+prev.addEventListener('click', () => {
+    currentImage = currentImage - 1
+    showImages()
+})
+
+const next = document.querySelector('#next')
+next.addEventListener('click', () => {
+    currentImage = currentImage + 1
+    showImages()
+})
