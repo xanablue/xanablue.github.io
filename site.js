@@ -47,14 +47,66 @@ setInterval(() => {
     showImages()
 }, 5000)
 
-const prev = document.querySelector('#prev')
-prev.addEventListener('click', () => {
-    currentImage = currentImage - 1
-    showImages()
-})
+// Added try/catch to these event listeners because it was interfering with my to do list event listener
+try {
+    const prev = document.querySelector('#prev')
+    prev.addEventListener('click', () => {
+        currentImage = currentImage - 1
+        showImages()
+    })
+}
+catch {
+    console.log("Prev button does not exist on this page.")
+}
 
-const next = document.querySelector('#next')
-next.addEventListener('click', () => {
-    currentImage = currentImage + 1
-    showImages()
+try {
+    const next = document.querySelector('#next')
+    next.addEventListener('click', () => {
+        currentImage = currentImage + 1
+        showImages()
+    })
+}
+catch {
+    console.log("Next button does not exist on this page.")
+}
+
+// Assignment 6 (To-Do List)
+const toDoList = document.querySelector('.todo-list') // ul element
+const addToDo = document.querySelector('button') // "add" button
+const newToDo = document.querySelector('#new-todo') // text input element
+
+// Get the list from local storage
+const toDos = JSON.parse(localStorage.getItem('todo-list')) || []
+
+// function
+const renderToDos = () => {
+    // Clear the li's before we recreate them
+    toDoList.innerHTML = ''
+
+    // loop
+    toDos.forEach(toDo => {
+        // Create and add new list items to the DOM
+        const li = document.createElement('li')
+        li.textContent = toDo.text
+        toDoList.append(li)
+    })
+}
+
+// render initial list
+renderToDos();
+
+// event listener
+addToDo.addEventListener('click', () => {
+
+    // Add a new item to the list
+    toDos.push({ text: newToDo.value, completed: false })
+
+    // Save the list to local storage
+    localStorage.setItem('todo-list', JSON.stringify(toDos))
+
+    // render updated list
+    renderToDos();
+
+    // clean out text box
+    newToDo.value = ''
 })
