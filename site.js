@@ -71,42 +71,83 @@ catch {
 }
 
 // Assignment 6 (To-Do List)
-const toDoList = document.querySelector('.todo-list') // ul element
-const addToDo = document.querySelector('button') // "add" button
-const newToDo = document.querySelector('#new-todo') // text input element
+try {
+    const toDoList = document.querySelector('.todo-list') // ul element
+    const addToDo = document.querySelector('button') // "add" button
+    const newToDo = document.querySelector('#new-todo') // text input element
 
-// Get the list from local storage
-const toDos = JSON.parse(localStorage.getItem('todo-list')) || []
+    // Get the list from local storage
+    const toDos = JSON.parse(localStorage.getItem('todo-list')) || []
 
-// function
-const renderToDos = () => {
-    // Clear the li's before we recreate them
-    toDoList.innerHTML = ''
+    // function
+    const renderToDos = () => {
+        // Clear the li's before we recreate them
+        toDoList.innerHTML = ''
 
-    // loop
-    toDos.forEach(toDo => {
-        // Create and add new list items to the DOM
-        const li = document.createElement('li')
-        li.textContent = toDo.text
-        toDoList.append(li)
-    })
-}
+        // loop
+        toDos.forEach(toDo => {
+            // Create and add new list items to the DOM
+            const li = document.createElement('li')
+            li.textContent = toDo.text
+            toDoList.append(li)
+        })
+    }
 
-// render initial list
-renderToDos();
-
-// event listener
-addToDo.addEventListener('click', () => {
-
-    // Add a new item to the list
-    toDos.push({ text: newToDo.value, completed: false })
-
-    // Save the list to local storage
-    localStorage.setItem('todo-list', JSON.stringify(toDos))
-
-    // render updated list
+    // render initial list
     renderToDos();
 
-    // clean out text box
-    newToDo.value = ''
-})
+    // event listener
+    addToDo.addEventListener('click', () => {
+
+        // Add a new item to the list
+        toDos.push({ text: newToDo.value, completed: false })
+
+        // Save the list to local storage
+        localStorage.setItem('todo-list', JSON.stringify(toDos))
+
+        // render updated list
+        renderToDos();
+
+        // clean out text box
+        newToDo.value = ''
+    })
+} catch {
+    console.log("To-do list does not exist on this page.")
+}
+
+// Assignment 7 (Pokemon API)
+try {
+    // fetch random pokemon data, return a pokemon object
+    const getRandomPokemon = async () => {
+        const url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1025)
+        const response = await fetch(url)
+        const data = await response.json()
+        return data
+    }
+    
+    // create/assign img and add it to div element
+    const renderPokemon = pokemon => {
+        const img = document.createElement('img')
+        img.src = pokemon.sprites.front_default
+        img.alt = pokemon.name
+    
+        const pokemonDiv = document.getElementById('pokemon')
+        pokemonDiv.append(img)
+    }
+    
+    // use the returned pokemon data to render the image
+    const displayPokemon = async () => {
+        const pokemon = await getRandomPokemon()
+        renderPokemon(pokemon)
+    }
+    
+    // displaying 6 images to randomly generate a whole team!
+    displayPokemon()
+    displayPokemon() 
+    displayPokemon() 
+    displayPokemon() 
+    displayPokemon() 
+    displayPokemon() 
+} catch {
+    console.log("Pokemon Generator does not exist on this page.")
+}
